@@ -10,10 +10,17 @@ class GildedRose {
 
     function update_quality() {
         foreach ($this->items as $item) {
+            // it is mentioned that conjured items degrade twice as normal ones
+            // but degradation != the increase of quality
+            $is_conjured = strpos(strtolower($item->name), "conjured") === 0;
+            
             if ($item->name != 'Aged Brie' and $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
                 if ($item->quality > 0) {
                     if ($item->name != 'Sulfuras, Hand of Ragnaros') {
                         $item->quality = $item->quality - 1;
+                        if ($is_conjured && $item->quality > 0) {
+                            $item->quality--;
+                        }
                     }
                 }
             } else {
@@ -44,6 +51,9 @@ class GildedRose {
                         if ($item->quality > 0) {
                             if ($item->name != 'Sulfuras, Hand of Ragnaros') {
                                 $item->quality = $item->quality - 1;
+                                if ($is_conjured && $item->quality > 0) {
+                                    $item->quality--;
+                                }
                             }
                         }
                     } else {

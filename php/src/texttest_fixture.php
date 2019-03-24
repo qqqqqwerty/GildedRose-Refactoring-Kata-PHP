@@ -26,8 +26,14 @@ if (count($argv) > 2) {
 }
 
 if ($with_conjured) {
-    // this conjured item does not work properly yet
-    array_push($items, new Item('Conjured Mana Cake', 3, 6));
+    array_push($items,
+        // testing basic conjured item
+        new Item('Conjured Mana Cake', 3, 6),
+        // testing conjured item having odd quality
+        new Item('Conjured Vitamin C', 5, 3),
+        // testing conjured item, which sell_in date comes before quality reaches 0
+        new Item('Conjured Pumpkin Soup', 5, 45)
+    );
 }
 
 $app = new GildedRose($items);
