@@ -1,0 +1,1 @@
+Tests were running on Windows 10 using TextTest application from https://sourceforge.net/projects/texttest/files/texttest/texttest-all-in-one.win32.exe/download
